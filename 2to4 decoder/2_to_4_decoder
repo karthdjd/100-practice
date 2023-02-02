@@ -1,0 +1,11 @@
+module 2_to_4_decoder(EN, A0, A1, D0, D1, D2, D3);
+input EN, A0, A1;
+output D0, D1, D2, D3;
+wire x,y;
+not (y,A1);
+not (x,A0);
+and (D0,EN,y,x);
+and (D1,EN,A0,y);
+and (D2,EN,x,A1);
+and (D3,EN,A0,A1);
+endmodule
