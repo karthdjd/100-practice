@@ -1,0 +1,17 @@
+module half_a_tb;
+reg A, B, Cin;
+wire S, Cout;
+integer i;
+half_a FA (.A(A),.B(B) , .S(S), .Cout(Cout));
+initial
+begin
+  {A,B} <= 2'b00;
+  for(i=1;i<5; i=i+1)
+begin
+$monitor($time, "\tA=%b\t B=%b\t  S=%b\t Cout=%b", A, B, S,Cout);
+#5{A,B} <= $random%8;
+end
+//always #5 {A,B}<=$random%8;
+#45 $finish;
+end
+endmodule
