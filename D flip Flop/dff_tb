@@ -1,0 +1,34 @@
+module dff_tb;  
+    reg clk;  
+    reg d;  
+    reg rstn;  
+    reg [2:0] delay; 
+  output q;
+  integer i;
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars;
+  end
+  
+    dff  dff0( .d(d),  
+                .rstn (rstn),  
+                .clk (clk),  
+                .q (q));  
+  
+   
+    always #10 clk = clk;  
+ 
+   
+    initial begin  
+        clk = 1;  
+        d = 1;  
+        rstn = 1;  
+  
+        #15 d = 0;  
+        #10 rstn = 1;  
+        for (i = 0; i < 5; i=i+1) begin  
+            delay = $random;  
+            #(delay) d = i;  
+        end  
+    end  
+endmodule  
