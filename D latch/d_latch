@@ -1,0 +1,15 @@
+module d_latch (  input d,            
+                  input en,         
+                  input rstn,        
+                  output reg q);     
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars;
+  end
+ always @ (en or rstn or d)  
+      if (!rstn)  
+         q <= 0;  
+      else  
+         if (en)  
+            q <= d;  
+endmodule  
