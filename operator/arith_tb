@@ -1,0 +1,33 @@
+module arith_tb;
+
+reg a;
+
+reg b;
+
+wire c;
+
+arith ar(.a(a),.b(b),.c(c));
+
+initial begin
+
+
+
+    $dumpfile("dump.vcd");
+
+    $dumpvars;
+
+
+
+        a=5;
+
+        b=10;
+
+        #5 $display("operation=%d",c);
+
+        #10 $finish;
+
+end
+
+endmodule
+
+~                
