@@ -1,5 +1,5 @@
 module decoder (
-   binary_in   , //  
+   binary_in   ,   
    decoder_out ,
   enable        
   );
