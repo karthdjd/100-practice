@@ -1,0 +1,21 @@
+module st_count_tb;
+  reg clk,rst;
+  wire [3:0]out;
+  initial begin
+     $dumpfile("dump.vcd");
+    $dumpvars;
+  end
+  st_count cu(.clk(clk),.rst(rst),.out(out));
+  always#5 clk=~clk;
+  
+  initial begin
+   
+    clk=0;
+    rst=0;
+    $monitor($time,"out=%b",out);
+    repeat (2)@(posedge clk);
+      rst<=1;
+    repeat (15)@(posedge clk);
+      $finish;
+  end
+endmodule
