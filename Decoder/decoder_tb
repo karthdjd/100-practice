@@ -1,0 +1,19 @@
+module decoder_tb;
+  reg [3:0]binary_in;
+  reg enable;
+  wire [15:0]decoder_out;
+  decoder dc(.binary_in(binary_in),.enable(enable),.decoder_out(decoder_out));
+  initial enable=0;
+  always#2 enable=1;
+  always begin
+    $dumpfile("dump.vcd");
+    $dumpvars;
+    
+    #5 binary_in=4'b1000;
+    #10 binary_in=4'b1000;
+   
+    
+     $display($time ," \t decoder_out=%h",decoder_out);
+    #20 $finish;
+  end
+endmodule
