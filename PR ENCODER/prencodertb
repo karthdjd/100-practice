@@ -16,7 +16,7 @@ module prencodertb;
 
 	  $dumpvars;
 
-    $monitor("D = %b -> y = %0b", D, y);
+    $monitor("D = %b ,y = %0b", D, y);
 
     repeat(5) begin
 
