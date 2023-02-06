@@ -1,0 +1,17 @@
+module sipo_tb;
+  reg clr,clk,d;
+  wire [3:0]q;
+  sipo co(.clr(clr),.clk(clk),.d(d),.q(q));
+  initial begin 
+    $dumpfile("dump.vcd");
+    $dumpvars;
+    clk=0;
+    clr=1;
+    d=0;
+    #10 clr=1'b0;
+  end
+  always #5clk=~clk;
+  always #10 d=~d;
+  initial $monitor("d=%b q=%b",d,q);
+  initial #30 $finish;
+endmodule
