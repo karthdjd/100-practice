@@ -1,0 +1,24 @@
+module piso_tb;
+  reg clr,clk,sel;
+  reg [3:0]d;
+  wire [3:0]q;
+  piso co(.clr(clr),.clk(clk),.d(d),.q(q),.sel(sel));
+  initial begin 
+    $dumpfile("dump.vcd");
+    $dumpvars;
+    clk=0;
+    clr=1;
+   
+    #2 clr=1'b0;
+    sel=1'b0;
+    d=4'b1010;
+    #2 sel=1'b1;
+    #10 sel=1'b0;
+    d=4'b1100;
+    #2 sel=1'b1;
+  end
+  always #1 clk=~clk;
+
+  initial $monitor("d=%b q=%b",d,q);
+  initial #30 $finish;
+endmodule
