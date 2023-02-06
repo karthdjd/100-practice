@@ -1,0 +1,15 @@
+module piso( clr,clk,sel,d, q);
+  reg [3:0]temp;
+  input clr,clk,sel;
+  output reg q;
+  input [3:0]d;
+  always@(posedge clk)
+    if(clr==1) q<=1'b0;
+  else if(sel==0)
+    temp<=d;
+  else begin
+    temp<=temp>>1;
+  q<=temp[0];
+  end
+
+endmodule
