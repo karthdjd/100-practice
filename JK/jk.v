@@ -2,7 +2,7 @@ module jk (
   input clk, rst_n,
   input j,k,
   output reg q,
-  output q_bar
+  output  reg q_bar
   );
   
   
