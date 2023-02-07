@@ -1,0 +1,22 @@
+module shift_reg(dataout, clk, rst, mode, datain);
+  output reg [3:0] dataout;
+  input clk, rst;
+  input [1:0] mode;
+  input [3:0] datain;
+  
+  always @(posedge clock)
+  begin
+    if(reset)
+      dataout <= 0;
+    else
+      begin
+        case(mode)
+          2'b00 : dataout <= dataout;      // locked mode, do nothing
+          2'b01 : dataout <= {datain[0], datain[3:1]};//DATAOUT >> 1; 
+          2'b10 : dataout <= {datain[2:0], datain[3]};//DATAOUT << 1; 
+          2'b11 : dataout <= datain;       // parallel in parallel out
+        endcase
+      end
+  end
+  
+endmodule 
