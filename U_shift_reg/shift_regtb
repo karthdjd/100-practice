@@ -1,0 +1,52 @@
+module shift_regtb;
+
+	
+	reg clock;
+	reg reset;
+	reg [1:0] mode;
+	reg [3:0] datain;
+
+	
+	wire [3:0] dataout;
+
+	// design Under Test (dUT)
+	shiftreg dut (
+		.dataout(dataout), 
+		.clk(clk), 
+		.rst(rst), 
+		.mode(mode), 
+		.datain(datain)
+	);
+
+	initial begin
+		
+		  clk =0; mode = 2'b00; datain = 4'b0000;
+    reset = 1; #20; reset = 0; #20;
+	 
+	 
+	  
+
+   #20 mode= 2'b01; datain = 4'b0011; 
+
+	
+	 
+	 
+
+	 #20  mode= 2'b10; datain= 4'b0111; 
+	 
+	 
+ 
+    #20 mode = 2'b11; datain = 4'b1010; 
+		
+
+	end
+	
+	always #5 clock=~clock;
+	
+	initial begin
+	$monitor(" Time=%t | mode =%b | datain=%b | dataout=%b",$time,mode,datain,dataout);
+	#200 $finish;
+	end
+	
+      
+endmodule
