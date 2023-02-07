@@ -1,0 +1,28 @@
+module ringctb;
+
+	
+	reg clk;
+	reg reset;
+	parameter WIDTH=4;
+
+	
+	wire [WIDTH-1:0] count;
+
+	//design under test
+	ringc dut(
+		.clk(clk), 
+		.reset(reset), 
+		.count(count)
+	);
+always #10 clk=~clk;
+
+	initial begin
+		clk = 0;
+		reset = 0;
+		$monitor ("T=%0t out=%b", $time, count);
+ #50 reset=1;
+ end
+	initial
+	#300 $finish;
+      
+endmodule
