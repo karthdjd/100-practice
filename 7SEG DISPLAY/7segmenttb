@@ -1,0 +1,35 @@
+module 7segmenttb;
+
+	
+
+	reg [3:0] num;
+	integer i;
+
+	
+	wire [6:0] Segment;
+
+	//dut design under test
+	7Segment dut (
+		.num(num), 
+		.Segment(Segment)
+	);
+
+		
+		
+		initial
+		begin
+		for(i=0;i<10;i=i+1)
+		begin
+		num=i;
+		#10;
+		end
+		end
+		initial
+		begin
+		$monitor("Binary Num=%b | ABCDEFG=%b",num,Segment);
+	   #400 $finish;
+		end
+
+
+      
+endmodule
