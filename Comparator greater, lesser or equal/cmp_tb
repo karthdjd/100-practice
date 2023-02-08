@@ -4,6 +4,8 @@ module cmp_tb;
   cmp  comparator(a,b,eq,lt,gt);
   initial
   begin
+  $dumpfile("cmp.vcd");
+  $dumpvars;
    a = 4'b1100;
    b = 4'b1100;
    #10;
