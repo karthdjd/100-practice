@@ -61,17 +61,8 @@ begin
 end
 endtask
 //to display the debug information
-task debug_information;
-begin
-	 $display("----------------------------------------------");  
-     $display("------------------   -----------------------");  
-     $display("----------- SIMULATION RESULT ----------------");  
-     $display("--------------       -------------------");  
-     $display("----------------     ---------------------");  
-     $display("----------------------------------------------");  
-     $monitor("TIME = %d, mosi = %b, miso = %b, data_in = %b",$time, mosi, miso, data_in);  
-end
-endtask
+
+
 //the generate block to generate the miso
 generate
 	if(CPHA == 0)
