@@ -40,7 +40,7 @@ module load_c_tb ();
 
   initial begin
     $dumpfile("load_c.vcd");
-    $dumpvars(2, day10_tb);
+    $dumpvars;
   end
 
 endmodule
