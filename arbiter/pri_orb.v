@@ -1,4 +1,4 @@
-module pri_orb #(
+module pri_arb #(
   parameter NUM_PORTS = 4
 )(
     input       wire[NUM_PORTS-1:0] req_i,
