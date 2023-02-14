@@ -17,8 +17,8 @@ module b2oneh_tb();
   end
 
   initial begin
-    $dumpfile("day8.vcd");
-    $dumpvars(2, day8_tb);
+    $dumpfile("b2oh.vcd");
+    $dumpvars;
   end
 
 endmodule
